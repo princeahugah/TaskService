@@ -16,10 +16,11 @@ export default class TaskService {
       include: [
         {
           model: UserModel,
-          as: 'user'
+          attributes: ['name'],
+          required: true
         }
       ],
-      order: Sequelize.literal('createdAt DESC'),
+      order: Sequelize.literal('Task.createdAt DESC'),
       raw: true
     });
   }

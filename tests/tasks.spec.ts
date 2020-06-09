@@ -1,17 +1,26 @@
 import dotenv from 'dotenv';
 dotenv.config();
+import UserModel from '../src/models/User';
 import TaskModel from '../src/models/Task';
 import TaskService from '../src/services/Task.service';
 import { expect } from 'chai';
 
 process.env.NODE_ENV = 'test';
 
-describe('User Service', () => {
+interface User {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+describe('Task Service', async () => {
   const task = new TaskService();
-  const john = { id: 'ae117bd7-5749-4dda-8eaa-76c2f82f9588', name: 'John Doe' };
+  let john: User;
 
   before(async () => {
     await TaskModel.destroy({ truncate: true, cascade: false });
+    john = (await UserModel.create({ name: 'John Doe' }, { raw: true })).toJSON() as User;
   });
 
   it('should return an empty list of tasks assigned to John Doe', async () => {
@@ -27,12 +36,12 @@ describe('User Service', () => {
         userId: john.id
       },
       {
-        name: 'to do',
+        state: 'to do',
         description: 'Learn Vue.js',
         userId: john.id
       },
       {
-        name: 'to do',
+        state: 'to do',
         description: 'Learn Node.js',
         userId: john.id
       }
