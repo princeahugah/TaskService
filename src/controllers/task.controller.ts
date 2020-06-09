@@ -6,7 +6,7 @@ export default {
 
   getTasks: (req: Request, res: Response): void => {
     req.app.get('task-service')
-        .getTasks()
+        .getTasks(req.params.userId)
         .then((tasks: TaskModel[]) => {
           req.payload = [...tasks];
           res.status(200).json(tasks).end();

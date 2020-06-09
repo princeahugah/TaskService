@@ -63,22 +63,22 @@ Your web server is now exposed on http://localhost:3002
 
 ### GET   /api/tasks/{userId}
 ```bash
-curl -XGET http://localhost:3002/api/tasks/24ce245e-8159-491f-8dc9-24c6d190baba
+curl -XGET http://localhost:3002/api/tasks/b2488515-4341-46d8-9548-3f4f6ee03176
 ```
 
-### POST   /api/tasks/{userId}
+### POST   /api/tasks
 ```bash
-curl -XPOST -H 'Content-Type: application/json' -d '{"state":"to do","description":"Learning Node.js"}' http://localhost:3002/api/tasks/24ce245e-8159-491f-8dc9-24c6d190baba
+curl -XPOST -H 'Content-Type: application/json' -d '{"state":"to do","description":"Learning Node.js","userId":"b2488515-4341-46d8-9548-3f4f6ee03176"}' http://localhost:3002/api/tasks
 ```
 
 ### PUT   /api/tasks/{taskId}
 ```bash
-curl -XPUT -H 'Content-Type: application/json' -d '{"state":"done","userId":"24ce245e-8159-491f-8dc9-24c6d190baba"}' http://localhost:3002/api/tasks/2dc0d00b-115c-4a03-bc3d-623352dc663d
+curl -XPUT -H 'Content-Type: application/json' -d '{"state":"done","userId":"b2488515-4341-46d8-9548-3f4f6ee03176"}' http://localhost:3002/api/tasks/ba0000b0-eb10-4f25-97eb-8cf70e36d2a1
 ```
 
 ### DELETE   /api/tasks/{taskId}
 ```bash
-curl -X DELETE http://localhost:3002/api/tasks/2dc0d00b-115c-4a03-bc3d-623352dc663d
+curl -X DELETE http://localhost:3002/api/tasks/ba0000b0-eb10-4f25-97eb-8cf70e36d2a1
 ```
 
 

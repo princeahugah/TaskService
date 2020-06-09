@@ -17,7 +17,7 @@ module.exports = {
             "id" UUID PRIMARY KEY NOT NULL,
             "state" ENUM ['to do', 'done'] NOT NULL DEFAULT 'to do',
             "description" VARCHAR(255) NULL,
-            "userId" uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+            "userId" uuid,
             "createdAt" DATETIME NOT NULL,
             "updatedAt" DATETIME NOT NULL,
             "deletedAt" DATETIME NULL

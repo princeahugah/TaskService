@@ -3,6 +3,7 @@ import UserModel from '../models/User';
 import TaskModel from '../models/Task';
 import { Sequelize } from 'sequelize';
 
+
 interface Task {
   [key: string]: string | null;
 }
@@ -37,12 +38,10 @@ export default class TaskService {
   async updateTask(id: string, payload: Task): Promise<TaskModel|null> {
     const task: TaskModel | null = await TaskModel.findByPk(id);
     if (task) {
-      return task.update(payload, {
-        where: {
-          userId: payload.userid
-        },
-        raw: true
+      Object.keys(payload).forEach((key: any) => {
+        task.set(key, payload[key]);
       });
+      return task.save();
     }
     return null;
   }
