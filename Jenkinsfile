@@ -35,6 +35,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'yarn install --frozen-lockfile'
+        sh 'yarn run migrate'
         sh '/usr/local/bin/tsc && /usr/local/bin/pm2 start ./dist/src/index.js --name task-service'
         sh '/usr/local/bin/pm2 status'
         script {
@@ -73,11 +74,12 @@ pipeline {
                   git clone "$repo"
                   cd "$appdir"
                 fi
-                yarn install --frozen-lockfile
                 /usr/local/bin/pm2 stop task-service
+                yarn install --frozen-lockfile
+                yarn run migrate
                 /usr/local/bin/pm2 start ./dist/src/index.js --name task-service
                 /usr/local/bin/pm2 status
-				      '''
+              '''
             }
           }
         }

@@ -1,12 +1,12 @@
 {
-  "name": "user-service",
+  "name": "task-service",
   "version": "1.0.0",
-  "description": "User Service",
+  "description": "Task Service",
   "author": "Prince Ahugah",
   "private": false,
-  "main": "./dist/index.js",
+  "main": "./dist/src/index.js",
   "scripts": {
-    "start": "tsc && pm2 start ./dist/src/index.js --name user-service",
+    "start": "tsc && pm2 start ./dist/src/index.js --name task-service",
     "stop": "pm2 stop user-service",
     "dev": "tsc && node dist/src/index.js",
     "migrate": "sequelize-cli db:migrate",
