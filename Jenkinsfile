@@ -39,7 +39,7 @@ pipeline {
         sh '/usr/local/bin/tsc && /usr/local/bin/pm2 start ./dist/src/index.js --name task-service'
         sh '/usr/local/bin/pm2 status'
         script {
-          def status = sh returnStdout: true, script: 'pm2 status | grep task-service | wc -l'
+          def status = sh returnStdout: true, script: '/usr/local/bin/pm2 status | grep task-service | wc -l'
           if (status == 0) {
             throw new Exception('An error may have occurred as the service could not start!')
           }
@@ -77,6 +77,7 @@ pipeline {
                 /usr/local/bin/pm2 stop task-service
                 yarn install --frozen-lockfile
                 /usr/local/bin/sequelize-cli db:migrate
+                /usr/local/bin/tsc
                 /usr/local/bin/pm2 start ./dist/src/index.js --name task-service
                 /usr/local/bin/pm2 status
               '''
