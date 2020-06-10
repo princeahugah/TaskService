@@ -37,6 +37,10 @@ CORS_EXPOSED_HEADERS = ["x-response-time"]
 CORS_METHODS = ["POST", "OPTIONS", "GET", "DELETE", "PUT"]
 ```
 
+Setup log directory
+```bash
+sudo mkdir -p /var/apps/log
+```
 
 ## Configure your database
 
