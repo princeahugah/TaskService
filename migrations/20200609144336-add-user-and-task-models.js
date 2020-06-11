@@ -17,7 +17,7 @@ module.exports = {
             "id" UUID PRIMARY KEY NOT NULL,
             "state" ENUM ['to do', 'done'] NOT NULL DEFAULT 'to do',
             "description" VARCHAR(255) NULL,
-            "userId" uuid,
+            "userId" uuid NOT NULL,
             "createdAt" DATETIME NOT NULL,
             "updatedAt" DATETIME NOT NULL,
             "deletedAt" DATETIME NULL
