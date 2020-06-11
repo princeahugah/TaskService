@@ -35,7 +35,12 @@ pipeline {
     stage('Build') {
       steps {
         sh 'yarn install --frozen-lockfile'
-        sh '/usr/local/bin/sequelize-cli db:migrate'
+        script {
+          def migrationStatus = sh returnStdout: true, script: '/usr/local/bin/sequelize-cli db:migrate | egrep "Done in|already exists" | wc -l'
+          if (migrationStatus == 0) {
+            throw new Exception('An error may have occurred during database migration!')
+          }
+        }
         sh '/usr/local/bin/tsc && /usr/local/bin/pm2 start ./dist/src/index.js --name task-service'
         sh '/usr/local/bin/pm2 status'
         script {
