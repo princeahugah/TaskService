@@ -55,7 +55,7 @@ sqlite3 dev_database.sqlite3
 sqlite> .schema
 ```
 ctrl + D to exit
-
+Note: development and production files are stored in /tmp directory
 
 ## Compile and run the service
 

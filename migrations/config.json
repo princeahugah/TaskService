@@ -1,7 +1,7 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "./dev_database.sqlite3"
+    "storage": "/tmp/dev_database.sqlite3"
   },
   "test": {
     "dialect": "sqlite",
@@ -9,6 +9,6 @@
   },
   "production": {
     "dialect": "sqlite",
-    "storage": "./prod_database.sqlite3"
+    "storage": "/tmp/prod_database.sqlite3"
   }
 }
