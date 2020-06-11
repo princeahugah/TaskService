@@ -31,10 +31,11 @@ DB_PASSWORD = pass123
 HASHING_ALGORITHM = sha256
 AUTH_SECRET = XbSK5mSY2IHiJCKHChhpaObq8YLDUH60nTFkZDHBXNRDBGyQlCViHTaV9
 
-CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://95.179.201.200:3000"]
 CORS_ALLOWED_HEADERS = ["Content-Type", "Authorization", "Origin", "X-Requested-With", "Accept"]
 CORS_EXPOSED_HEADERS = ["x-response-time"]
 CORS_METHODS = ["POST", "OPTIONS", "GET", "DELETE", "PUT"]
+
 ```
 
 Setup log directory
